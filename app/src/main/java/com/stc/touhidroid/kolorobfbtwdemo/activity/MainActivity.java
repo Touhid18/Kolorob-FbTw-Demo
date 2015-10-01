@@ -15,13 +15,22 @@ import com.stc.touhidroid.kolorobfbtwdemo.utils.AppConstants;
 import com.stc.touhidroid.kolorobfbtwdemo.utils.DepthPageTransformer;
 import com.stc.touhidroid.kolorobfbtwdemo.views.SlidingTabLayout;
 
+import com.twitter.sdk.android.Twitter;
+import com.twitter.sdk.android.core.TwitterAuthConfig;
+import io.fabric.sdk.android.Fabric;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
+    // Note: Your consumer key and secret should be obfuscated in your source code before shipping.
+    private static final String TWITTER_KEY = "Ry0m7RkvJT6wmMdo9aa4y9Ypa";
+    private static final String TWITTER_SECRET = "gPCndp5KnmXzQWdT8QAbjOazENWFrYjrRQ4gt8AOW1mZdxJI7T";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        TwitterAuthConfig authConfig = new TwitterAuthConfig(TWITTER_KEY, TWITTER_SECRET);
+        Fabric.with(this, new Twitter(authConfig));
         setContentView(R.layout.activity_main);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.tbarMainActivity);

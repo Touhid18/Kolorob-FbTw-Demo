@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
         ArrayList<PagerTabItem> tabList = new ArrayList<>();
         tabList.add(new PagerTabItem(AppConstants.KEY_FACEBOOK_ID,
                 "Facebook",
-                R.color.facebook_blue,
+                R.color.green_cream,
                 Color.GRAY
         ));
 

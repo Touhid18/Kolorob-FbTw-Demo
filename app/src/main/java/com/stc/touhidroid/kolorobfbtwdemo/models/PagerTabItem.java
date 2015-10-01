@@ -2,6 +2,10 @@ package com.stc.touhidroid.kolorobfbtwdemo.models;
 
 import android.support.v4.app.Fragment;
 
+import com.stc.touhidroid.kolorobfbtwdemo.fragments.FacebookFragment;
+import com.stc.touhidroid.kolorobfbtwdemo.fragments.TwitterFragment;
+import com.stc.touhidroid.kolorobfbtwdemo.utils.AppConstants;
+
 /**
  * Created by touhid on 10/1/15.
  *
@@ -36,8 +40,13 @@ public class PagerTabItem {
         return dividerColor;
     }
 
-    public Fragment getPagerFragment(){
-        return null; // TODO
+    public Fragment getPagerFragment() {
+        if (this.getTabId() == AppConstants.KEY_FACEBOOK_ID)
+            return FacebookFragment.newInstance();
+        else if (this.getTabId() == AppConstants.KEY_TWITTER_ID)
+            return TwitterFragment.newInstance();
+        else
+            return null;
     }
 
     @Override

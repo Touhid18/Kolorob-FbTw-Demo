@@ -17,7 +17,7 @@ public class SocialFragPagerAdapter extends FragmentPagerAdapter {
 
     private ArrayList<PagerTabItem> mTabList;
 
-    SocialFragPagerAdapter(FragmentManager fm, ArrayList<PagerTabItem> tabList) {
+    public SocialFragPagerAdapter(FragmentManager fm, ArrayList<PagerTabItem> tabList) {
         super(fm);
         mTabList = tabList;
     }

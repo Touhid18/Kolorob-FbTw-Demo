@@ -11,6 +11,8 @@ import android.view.MenuItem;
 import com.stc.touhidroid.kolorobfbtwdemo.R;
 import com.stc.touhidroid.kolorobfbtwdemo.adapters.SocialFragPagerAdapter;
 import com.stc.touhidroid.kolorobfbtwdemo.models.PagerTabItem;
+import com.stc.touhidroid.kolorobfbtwdemo.utils.AppConstants;
+import com.stc.touhidroid.kolorobfbtwdemo.utils.DepthPageTransformer;
 import com.stc.touhidroid.kolorobfbtwdemo.views.SlidingTabLayout;
 
 import java.util.ArrayList;
@@ -31,11 +33,12 @@ public class MainActivity extends AppCompatActivity {
     private void configureViewPager() {
         final ArrayList<PagerTabItem> tabList = getSocialTabList();
 
-        ViewPager mViewPager = (ViewPager) findViewById(R.id.vPagerSocialTabs);
-        mViewPager.setAdapter(new SocialFragPagerAdapter(getSupportFragmentManager(), tabList));
+        ViewPager vPagerSocialTabs = (ViewPager) findViewById(R.id.vPagerSocialTabs);
+        vPagerSocialTabs.setAdapter(new SocialFragPagerAdapter(getSupportFragmentManager(), tabList));
+        vPagerSocialTabs.setPageTransformer(true, new DepthPageTransformer());
 
         SlidingTabLayout mSlidingTabLayout = (SlidingTabLayout) findViewById(R.id.stlSocialTabs);
-        mSlidingTabLayout.setViewPager(mViewPager);
+        mSlidingTabLayout.setViewPager(vPagerSocialTabs);
 
         mSlidingTabLayout.setCustomTabColorizer(new SlidingTabLayout.TabColorizer() {
 
@@ -54,12 +57,14 @@ public class MainActivity extends AppCompatActivity {
 
     private ArrayList<PagerTabItem> getSocialTabList() {
         ArrayList<PagerTabItem> tabList = new ArrayList<>();
-        tabList.add(new PagerTabItem( "Facebook",
+        tabList.add(new PagerTabItem(AppConstants.KEY_FACEBOOK_ID,
+                "Facebook",
                 R.color.facebook_blue,
                 Color.GRAY
         ));
 
-        tabList.add(new PagerTabItem( "Twitter",
+        tabList.add(new PagerTabItem(AppConstants.KEY_TWITTER_ID,
+                "Twitter",
                 R.color.twitter_blue,
                 Color.GRAY
         ));

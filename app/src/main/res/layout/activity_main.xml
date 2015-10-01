@@ -12,10 +12,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
-        app:contentInsetEnd="0dp"
-        app:contentInsetStart="0dp"
-        app:subtitle="touhiDroid"
+        app:contentInsetEnd="2dp"
+        app:contentInsetStart="2dp"
         app:title="Kolorob : FbTw Demo"
+        app:subtitle="touhiDroid"
         android:minHeight="64dp" />
 
 
@@ -24,7 +24,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:background="@color/Snow2"
+        android:background="@color/touhid_green"
         android:fillViewport="true"
         android:minHeight="52dp"
         android:textSize="16sp"

@@ -1,8 +1,27 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
+    <style name="AppTheme"  parent="@style/Theme.AppCompat.Light.DarkActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="colorPrimary">@color/touhid_green3</item>
+        <item name="colorPrimaryDark">@color/touhid_green2</item>
+    </style>
+
+    <style name="TouhiDroid.Toolbar.Solid" parent="Widget.AppCompat.ActionBar">
+        <item name="android:elevation" tools:ignore="NewApi">7dp</item>
+        <item name="android:titleTextAppearance" tools:ignore="NewApi">@style/TouhiDroid.ActionBarTitleStyle</item>
+        <item name="titleTextAppearance">@style/TouhiDroid.ActionBarTitleStyle</item>
+    </style>
+
+
+    <style name="TouhiDroid.ActionBarTitleStyle" parent="@style/Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:textAppearance">@android:style/TextAppearance.Medium</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textAllCaps" tools:ignore="NewApi">false</item>
+        <!-- <item name="android:ellipsize">none</item> -->
+        <item name="android:maxLines">1</item>
     </style>
 
 </resources>

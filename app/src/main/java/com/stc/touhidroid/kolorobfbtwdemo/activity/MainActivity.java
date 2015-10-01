@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         vPagerSocialTabs.setPageTransformer(true, new DepthPageTransformer());
 
         SlidingTabLayout mSlidingTabLayout = (SlidingTabLayout) findViewById(R.id.stlSocialTabs);
+        mSlidingTabLayout.setDistributeEvenly(true);
         mSlidingTabLayout.setViewPager(vPagerSocialTabs);
 
         mSlidingTabLayout.setCustomTabColorizer(new SlidingTabLayout.TabColorizer() {

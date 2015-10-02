@@ -20,7 +20,7 @@ import com.twitter.sdk.android.core.identity.TwitterLoginButton;
  * @author touhid
  */
 public class TwitterFragment extends Fragment{
-    private TwitterLoginButton loginButton;
+    // private TwitterLoginButton loginButton;
 
     public static TwitterFragment newInstance(){
         return new TwitterFragment();
@@ -36,7 +36,7 @@ public class TwitterFragment extends Fragment{
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        loginButton = (TwitterLoginButton) view.findViewById(R.id.twitter_login_button);
+        /*loginButton = (TwitterLoginButton) view.findViewById(R.id.twitter_login_button);
         loginButton.setCallback(new Callback<TwitterSession>() {
             @Override
             public void success(Result<TwitterSession> result) {
@@ -47,13 +47,13 @@ public class TwitterFragment extends Fragment{
             public void failure(TwitterException exception) {
                 // Do something on failure
             }
-        });
+        });*/
 
     }
-    @Override
+    /*@Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         // super.onActivityResult(requestCode, resultCode, data);
         loginButton.onActivityResult(requestCode, resultCode, data);
         Toast.makeText(getActivity(), "Twitter logged-in", Toast.LENGTH_SHORT).show();
-    }
+    }*/
 }

@@ -1,7 +1,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
-    <style name="AppTheme"  parent="@style/Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="@style/Theme.AppCompat.Light.DarkActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="colorPrimary">@color/touhid_green3</item>
@@ -10,7 +10,9 @@
 
     <style name="TouhiDroid.Toolbar.Solid" parent="Widget.AppCompat.ActionBar">
         <item name="android:elevation" tools:ignore="NewApi">7dp</item>
-        <item name="android:titleTextAppearance" tools:ignore="NewApi">@style/TouhiDroid.ActionBarTitleStyle</item>
+        <item name="android:titleTextAppearance" tools:ignore="NewApi">
+            @style/TouhiDroid.ActionBarTitleStyle
+        </item>
         <item name="titleTextAppearance">@style/TouhiDroid.ActionBarTitleStyle</item>
     </style>
 
@@ -22,6 +24,11 @@
         <item name="android:textAllCaps" tools:ignore="NewApi">false</item>
         <!-- <item name="android:ellipsize">none</item> -->
         <item name="android:maxLines">1</item>
+    </style>
+
+    <style name="DialogAnimation" parent="Theme.AppCompat.Light.Dialog">
+        <item name="android:windowEnterAnimation">@anim/slide_up</item>
+        <item name="android:windowExitAnimation">@anim/slide_down</item>
     </style>
 
 </resources>

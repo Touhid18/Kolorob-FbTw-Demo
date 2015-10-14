@@ -22,8 +22,9 @@ import com.stc.touhidroid.kolorobfbtwdemo.utils.AppConstants;
 import com.stc.touhidroid.kolorobfbtwdemo.utils.AppDialogManager;
 import com.stc.touhidroid.kolorobfbtwdemo.utils.DepthPageTransformer;
 import com.stc.touhidroid.kolorobfbtwdemo.views.SlidingTabLayout;
+import com.twitter.sdk.android.Twitter;
 import com.twitter.sdk.android.core.TwitterAuthConfig;
-import com.twitter.sdk.android.core.TwitterCore;
+import com.twitter.sdk.android.tweetcomposer.TweetComposer;
 import com.twitter.sdk.android.tweetui.TweetUi;
 
 import java.security.MessageDigest;
@@ -33,17 +34,18 @@ import java.util.ArrayList;
 import io.fabric.sdk.android.Fabric;
 
 public class MainActivity extends AppCompatActivity {
+
     private static final String TAG = MainActivity.class.getSimpleName();
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        TwitterAuthConfig authConfig = new TwitterAuthConfig(AppConstants.TWITTER_KEY,
+                AppConstants.TWITTER_SECRET);
+        Fabric.with(this, new Twitter(authConfig), new TweetUi(), new TweetComposer());
 
         FacebookSdk.sdkInitialize(getApplicationContext());
-        TwitterAuthConfig authConfig = new TwitterAuthConfig(
-                AppConstants.TWITTER_KEY, AppConstants.TWITTER_SECRET);
-        Fabric.with(this, new TwitterCore(authConfig), new TweetUi());
 
         setContentView(R.layout.activity_main);
 
@@ -51,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         configureViewPager();
-        showHashKey();
+        // showHashKey();
     }
 
     private void configureViewPager() {
@@ -107,11 +109,8 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        if (id == R.id.action_settings) {
-            return true;
-        }
+        return id == R.id.action_settings || super.onOptionsItemSelected(item);
 
-        return super.onOptionsItemSelected(item);
     }
 
     @Override

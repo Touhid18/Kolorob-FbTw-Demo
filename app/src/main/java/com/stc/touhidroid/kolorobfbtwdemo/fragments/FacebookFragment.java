@@ -1,5 +1,6 @@
 package com.stc.touhidroid.kolorobfbtwdemo.fragments;
 
+import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Parcel;
@@ -20,6 +21,8 @@ import com.facebook.share.model.ShareOpenGraphObject;
 import com.facebook.share.widget.ShareDialog;
 import com.stc.touhidroid.kolorobfbtwdemo.R;
 import com.stc.touhidroid.kolorobfbtwdemo.utils.AppConstants;
+import com.stc.touhidroid.kolorobfbtwdemo.utils.AppDialogManager;
+import com.stc.touhidroid.kolorobfbtwdemo.utils.AppUtils;
 
 /**
  * Created by touhid on 10/2/15.
@@ -47,6 +50,7 @@ public class FacebookFragment extends Fragment {
         }
     };
 */
+    private static final String NO_INTERNET_MSG = "No internet available! Please first connect to internet to post your status ...";
     public static FacebookFragment newInstance() {
         return new FacebookFragment();
     }
@@ -69,19 +73,24 @@ public class FacebookFragment extends Fragment {
         view.findViewById(R.id.btnPostStatusFb).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Context ctx = getActivity();
+                if(!AppUtils.isInternetAvailable(ctx)){
+                    AppDialogManager.showSimpleAlert(ctx, NO_INTERNET_MSG);
+                    return;
+                }
                 ShareOpenGraphObject object = new ShareOpenGraphObject.Builder()
-                        .putString("og:type", "books.book")
-                        .putString("og:title", "A Game of Thrones")
+                        .putString("og:title", AppConstants.POST_TITLE)
+                        .putString("og:type", "com_sci_kolorob_fbtw:status") // TO_DO
                         .putString("og:description", etStatus.getText().toString())
-                        .putString("books:isbn", "0-553-57340-3")
+                        // .putString("books:isbn", "0-553-57340-3")/*TO_DO*/
                         .build();
                 ShareOpenGraphAction action = new ShareOpenGraphAction.Builder()
-                        .setActionType("books.reads")
-                        .putObject("book", object)
+                         .setActionType("com_sci_kolorob_fbtw:review") // TO_DO
+                         .putObject("status", object) // TO_DO
                         .build();
                 // Create the content
                 ShareOpenGraphContent content = new ShareOpenGraphContent.Builder()
-                        .setPreviewPropertyName("book")
+                         .setPreviewPropertyName("status") // TODO
                         .setAction(action)
                         .build();
                 ShareDialog.show(FacebookFragment.this, content);

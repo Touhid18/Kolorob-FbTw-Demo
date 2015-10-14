@@ -1,29 +1,29 @@
 package com.stc.touhidroid.kolorobfbtwdemo.fragments;
 
-import android.content.Intent;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.stc.touhidroid.kolorobfbtwdemo.R;
-import com.twitter.sdk.android.core.Callback;
-import com.twitter.sdk.android.core.Result;
-import com.twitter.sdk.android.core.TwitterException;
-import com.twitter.sdk.android.core.TwitterSession;
-import com.twitter.sdk.android.core.identity.TwitterLoginButton;
+import com.stc.touhidroid.kolorobfbtwdemo.utils.AppDialogManager;
+import com.stc.touhidroid.kolorobfbtwdemo.utils.AppUtils;
 import com.twitter.sdk.android.tweetcomposer.TweetComposer;
 
 /**
  * Created by touhid on 10/2/15.
+ *
  * @author touhid
  */
-public class TwitterFragment extends Fragment{
-    // private TwitterLoginButton loginButton;
+public class TwitterFragment extends Fragment {
 
-    public static TwitterFragment newInstance(){
+    private static final String NO_INTERNET_MSG = "No internet available! Please first connect to internet to tweet ...";
+
+    public static TwitterFragment newInstance() {
         return new TwitterFragment();
     }
 
@@ -52,6 +52,26 @@ public class TwitterFragment extends Fragment{
                 // Do something on failure
             }
         });*/
+        final EditText etTweet = (EditText) view.findViewById(R.id.etTweetTw);
+        view.findViewById(R.id.btnPostTweetTw).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Context ctx = getActivity();
+                if(!AppUtils.isInternetAvailable(ctx)){
+                    AppDialogManager.showSimpleAlert(ctx, NO_INTERNET_MSG);
+                    return;
+                }
+                String tweetText = etTweet.getText().toString();
+                if(tweetText.length()<2) {
+                    Toast.makeText(ctx, "Too short Tweet!", Toast.LENGTH_SHORT).show();
+                    return ;
+                }
+                TweetComposer.Builder builder = new TweetComposer.Builder(getActivity())
+                        .text(tweetText);
+                //.image(myImageUri);
+                builder.show();
+            }
+        });
 
     }
     /*@Override

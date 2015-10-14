@@ -14,6 +14,7 @@ import com.twitter.sdk.android.core.Result;
 import com.twitter.sdk.android.core.TwitterException;
 import com.twitter.sdk.android.core.TwitterSession;
 import com.twitter.sdk.android.core.identity.TwitterLoginButton;
+import com.twitter.sdk.android.tweetcomposer.TweetComposer;
 
 /**
  * Created by touhid on 10/2/15.
@@ -35,7 +36,10 @@ public class TwitterFragment extends Fragment{
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
+        /*TweetComposer.Builder builder = new TweetComposer.Builder(getActivity())
+                .text("just setting up my Fabric.");
+                // .image(myImageUri);
+        builder.show();*/
         /*loginButton = (TwitterLoginButton) view.findViewById(R.id.twitter_login_button);
         loginButton.setCallback(new Callback<TwitterSession>() {
             @Override

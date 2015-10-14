@@ -22,8 +22,9 @@ import com.stc.touhidroid.kolorobfbtwdemo.utils.AppConstants;
 import com.stc.touhidroid.kolorobfbtwdemo.utils.AppDialogManager;
 import com.stc.touhidroid.kolorobfbtwdemo.utils.DepthPageTransformer;
 import com.stc.touhidroid.kolorobfbtwdemo.views.SlidingTabLayout;
-import com.twitter.sdk.android.Twitter;
 import com.twitter.sdk.android.core.TwitterAuthConfig;
+import com.twitter.sdk.android.core.TwitterCore;
+import com.twitter.sdk.android.tweetui.TweetUi;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -42,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         FacebookSdk.sdkInitialize(getApplicationContext());
         TwitterAuthConfig authConfig = new TwitterAuthConfig(
                 AppConstants.TWITTER_KEY, AppConstants.TWITTER_SECRET);
-        Fabric.with(this, new Twitter(authConfig));
+        Fabric.with(this, new TwitterCore(authConfig), new TweetUi());
 
         setContentView(R.layout.activity_main);
 
